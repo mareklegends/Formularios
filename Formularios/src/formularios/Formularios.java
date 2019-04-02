@@ -5,6 +5,10 @@
  */
 package formularios;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alumno
@@ -55,6 +59,11 @@ public class Formularios extends javax.swing.JFrame {
         jLabel1.setText("Teléfonos");
 
         jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAceptarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,6 +121,58 @@ public class Formularios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMouseClicked
+        // TODO add your handling code here:
+        
+                
+        Pattern pdni = Pattern.compile("[0-9]{7}[A-Z]");
+                       
+        Matcher mdni = pdni.matcher(jTextFieldNombre.getText());
+       
+        if(!mdni.matches()){
+            JOptionPane.showMessageDialog(null,"El DNI no es correcto");
+        }
+        
+        Pattern pnombre = Pattern.compile("^[a-z]*[A-Z]*");
+                       
+        Matcher mnombre = pnombre.matcher(jTextFieldNombre.getText());
+       
+        if(!mnombre.matches()){
+            JOptionPane.showMessageDialog(null,"El Nombre no es correcto");
+        }
+        
+        Pattern papellido = Pattern.compile("^[a-z]*[A-Z]*");
+                       
+        Matcher mapellido = papellido.matcher(jTextFieldApellidos.getText());
+       
+        if(!mapellido.matches()){
+            JOptionPane.showMessageDialog(null,"El Apellido no es correcto");
+        }
+        
+        
+        
+        Pattern pcorreo = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+                       
+        Matcher mcorreo = pcorreo.matcher(jTextFieldEmail.getText());
+       
+        if(!mcorreo.matches()){
+            JOptionPane.showMessageDialog(null,"El correo no es correcto");
+        }
+        
+           Pattern ptelefono = Pattern.compile("");
+                       
+        Matcher mtelefono = ptelefono.matcher(jTextFieldTelefonos.getText());
+       
+        if(!mtelefono.matches()){
+            JOptionPane.showMessageDialog(null,"El Telefono no es correcto");
+        }
+        
+        if (mdni.matches() && mnombre.matches() && mapellido.matches() && mcorreo.matches() && mtelefono.matches()){
+            JOptionPane.showMessageDialog(null,"Todo esta correcto");
+        }
+        
+    }//GEN-LAST:event_jButtonAceptarMouseClicked
 
     /**
      * @param args the command line arguments
