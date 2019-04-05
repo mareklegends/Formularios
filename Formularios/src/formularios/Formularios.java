@@ -126,15 +126,15 @@ public class Formularios extends javax.swing.JFrame {
         // TODO add your handling code here:
         
                 
-        Pattern pdni = Pattern.compile("[0-9]{7}[A-Z]");
+        Pattern pdni = Pattern.compile("[0-9]{8}[A-HJ-NP-TV-Z]");
                        
-        Matcher mdni = pdni.matcher(jTextFieldNombre.getText());
+        Matcher mdni = pdni.matcher(jTextFieldDni.getText().trim());
        
         if(!mdni.matches()){
             JOptionPane.showMessageDialog(null,"El DNI no es correcto");
         }
         
-        Pattern pnombre = Pattern.compile("^[a-z]*[A-Z]*");
+        Pattern pnombre = Pattern.compile("[A-Za-z]+");
                        
         Matcher mnombre = pnombre.matcher(jTextFieldNombre.getText());
        
@@ -142,7 +142,7 @@ public class Formularios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"El Nombre no es correcto");
         }
         
-        Pattern papellido = Pattern.compile("^[a-z]*[A-Z]*");
+        Pattern papellido = Pattern.compile("[A-Za-z]+");
                        
         Matcher mapellido = papellido.matcher(jTextFieldApellidos.getText());
        
@@ -152,7 +152,7 @@ public class Formularios extends javax.swing.JFrame {
         
         
         
-        Pattern pcorreo = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+        Pattern pcorreo = Pattern.compile("[^@]+@[^@]+\\\\.[a-zA-Z]{2,}");
                        
         Matcher mcorreo = pcorreo.matcher(jTextFieldEmail.getText());
        
@@ -160,7 +160,7 @@ public class Formularios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"El correo no es correcto");
         }
         
-           Pattern ptelefono = Pattern.compile("");
+           Pattern ptelefono = Pattern.compile("[0-8]{9}");
                        
         Matcher mtelefono = ptelefono.matcher(jTextFieldTelefonos.getText());
        
